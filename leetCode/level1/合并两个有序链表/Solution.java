@@ -33,8 +33,6 @@ public class Solution {
             cur.next = l1;
         }
         return cur.next;
-
-
     }
 
 
