@@ -16,16 +16,25 @@ public class Solution {
         ListNode listNode = new ListNode(0);
         ListNode cur = listNode;
         while(l1.next!=null && l2.next!=null){
-            if(l1.val > l2.val){
-
-
+            if(l1.val < l2.val){        //l1链表提出来
+                cur.next = l1;
+                cur = cur.next;
+                l1 = l1.next;
             }else{
-
+                cur.next = l2;
+                cur = cur.next;
+                l2 = l2.next;
             }
         }
+        // 任一为空，直接连接另一条链表
+        if (l1 == null) {
+            cur.next = l2;
+        } else {
+            cur.next = l1;
+        }
+        return cur.next;
 
 
-        return listNode;
     }
 
 
