@@ -2,9 +2,9 @@ package 树.tree;
 
 public class Node<E extends Comparable<E>> implements TreeNode {
 
-    E value;
-    Node<E> left;
-    Node<E> right;
+    public E value;
+    public Node<E> left;
+    public Node<E> right;
 
 
     public Node(E value) {
