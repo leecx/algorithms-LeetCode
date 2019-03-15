@@ -51,7 +51,7 @@ public class Solution {
     }
 
     /**
-     * 前序遍历，递归
+     * 前序遍历，递归   中左右
      * @param root
      */
     public void voidPreorderTraversal(Node root){
@@ -62,9 +62,33 @@ public class Solution {
         }
     }
 
+    /**
+     * 中序遍历    左中右
+     * @param root
+     */
+    public void voidInorderTraversal(Node root){
+        if(root!=null){     //递归结束条件
+            voidInorderTraversal(root.left);
+            System.out.println(root.value);
+            voidInorderTraversal(root.right);
+        }
+    }
+
+    /**
+     * 后序遍历     左右中
+     * @param root
+     */
+    public void voidPostorderTraversal(Node root){
+        if(root!=null){     //递归结束条件
+            voidPostorderTraversal(root.left);
+            voidPostorderTraversal(root.right);
+            System.out.println(root.value);
+        }
+    }
+
     public static void main(String[] args) {
         Solution solution = new Solution();
-        solution.voidPreorderTraversal(node);
+        solution.voidInorderTraversal(node);
         List<Node> nodes = solution.preorderTraversal(node);
         nodes.forEach(i->{
             System.out.print(i.value);
