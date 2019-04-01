@@ -55,7 +55,8 @@ public class Solution {
      * @param root
      */
     public void voidPreorderTraversal(Node root){
-        if(root!=null){     //递归结束条件
+        //递归结束条件
+        if(root!=null){
             System.out.println(root.value);
             voidPreorderTraversal(root.left);
             voidPreorderTraversal(root.right);
@@ -67,7 +68,8 @@ public class Solution {
      * @param root
      */
     public void voidInorderTraversal(Node root){
-        if(root!=null){     //递归结束条件
+        //递归结束条件
+        if(root!=null){
             voidInorderTraversal(root.left);
             System.out.println(root.value);
             voidInorderTraversal(root.right);
@@ -79,7 +81,8 @@ public class Solution {
      * @param root
      */
     public void voidPostorderTraversal(Node root){
-        if(root!=null){     //递归结束条件
+        //递归结束条件
+        if(root!=null){
             voidPostorderTraversal(root.left);
             voidPostorderTraversal(root.right);
             System.out.println(root.value);
