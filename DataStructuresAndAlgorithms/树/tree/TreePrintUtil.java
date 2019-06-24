@@ -1,7 +1,4 @@
 package 树.tree;
-
-import 树.tree.TreeNode ;
-
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -38,7 +35,7 @@ public class TreePrintUtil  {
         if (parent == null) {
             return;
         }
-        int nameoffset = parent.toString().length() / 2;
+        int nameoffset = parent.toString().length() / 2 ;
         PrintLine line = lineMap.get(level);
         if (line == null) {
             line = new PrintLine();
