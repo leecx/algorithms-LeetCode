@@ -3,7 +3,7 @@ package 树.tree;
 /**
  * @author lichenxin
  */
-public class Node<E extends Comparable<E>> implements TreeNode {
+public class Node<E extends Comparable<E>> implements TreeNode  {
     /**
      * 值
      */
@@ -36,6 +36,7 @@ public class Node<E extends Comparable<E>> implements TreeNode {
     public String toString() {
         return "[" + value + "]";
     }
+
 
     @Override
     public String getPrintInfo() {

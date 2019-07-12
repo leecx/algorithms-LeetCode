@@ -110,5 +110,12 @@ public class Solution {
         throw new IllegalArgumentException("没有结果！");
     }
 
+    public int[] twoSumBySort(int[] sortNums,int target){
+        for(int i = 0; i< sortNums.length;i++){
+        }
+
+        return null;
+    }
+
 
 }

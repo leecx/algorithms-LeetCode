@@ -2,6 +2,8 @@ package 树.tree;
 
 import org.junit.Test;
 
+import java.util.Stack;
+
 /**
  * 二叉排序树   左小右大
  */
@@ -13,7 +15,7 @@ public class BSTree<E extends Comparable<E>> {
     private Node<E> root;
 
     /**
-     * 前序遍历
+     * 前序遍历     中左右
      *
      * @param tree
      */
@@ -25,12 +27,51 @@ public class BSTree<E extends Comparable<E>> {
         }
     }
 
+    private void preOrderByStack(Node<E> tree){
+        Stack<Node<E>> stack = new Stack();
+        while(tree!=null){
+            System.out.print(tree.value+" ");
+            if(tree.right!=null){
+                stack.push(tree.right);
+            }
+            if(tree.left!=null){
+                tree = tree.left;
+            }else{
+                if(stack.empty()){
+                    tree = null;
+                }else{
+                    tree = stack.pop();
+                }
+            }
+        }
+    }
+
+    private void preOrderByStack1(Node<E> tree){
+        Stack<Node> stack = new Stack();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            Node pop = stack.pop();
+            System.out.print(pop.value + " ");
+            //result.add(pop);
+            if(pop.right!=null){
+                stack.push(pop.right);
+            }
+            if(pop.left!=null){
+                stack.push(pop.left);
+            }
+        }
+    }
+
+    public void preOrderByStack() {
+        preOrderByStack(root);
+    }
+
     public void preOrder() {
         preOrder(root);
     }
 
     /**
-     * 中序遍历
+     * 中序遍历      左中右
      *
      * @param tree
      */
@@ -42,12 +83,35 @@ public class BSTree<E extends Comparable<E>> {
         }
     }
 
+    /**
+     * 中序 用栈遍历，把每个节点拆开来看
+     * @param tree
+     */
+    private void inOrderByStack(Node<E> tree){
+        Stack<Node> stack = new Stack<>();
+        while (tree != null || !stack.isEmpty()) {
+            while (tree != null) {
+                stack.push(tree);
+                tree = tree.left;
+            }
+            if (!stack.isEmpty()) {
+                tree = stack.pop();
+                System.out.print(tree.value + " ");
+                tree = tree.right;
+            }
+        }
+    }
+
+    public void inOrderByStack(){
+        inOrderByStack(root);
+    }
+
     public void inOrder() {
         inOrder(root);
     }
 
     /**
-     * 后序遍历
+     * 后序遍历     左右中
      *
      * @param tree
      */
@@ -57,6 +121,33 @@ public class BSTree<E extends Comparable<E>> {
             postOrder(tree.right);
             System.out.print(tree.value + " ");
         }
+    }
+
+    /**
+     * 非递归 后序遍历，拆开节点  左右中
+     * @param tree
+     */
+    private void postOrderByStack(Node<E> tree){
+        Stack<Node> stack = new Stack<>();
+        Stack<Node> stack2 = new Stack<>();
+        while (tree != null || !stack.isEmpty()) {
+            while (tree != null) {
+                stack.push(tree);
+                stack2.push(tree);
+                tree = tree.right;
+            }
+            if (!stack.isEmpty()) {
+                tree = stack.pop().left;
+            }
+        }
+
+        while (!stack2.isEmpty()){
+            System.out.print(stack2.pop().value + " ");
+        }
+    }
+
+    public void postOrderByStack(){
+        postOrderByStack(root);
     }
 
     public void postOrder() {
@@ -158,23 +249,33 @@ public class BSTree<E extends Comparable<E>> {
     public void test() throws InterruptedException {
         BSTree bsTree = new BSTree();
         bsTree.insert(1);
-        Thread.sleep(50);
-        TreePrintUtil.pirnt(bsTree.root);Thread.sleep(50);
-        bsTree.insert(6);Thread.sleep(50);
-        TreePrintUtil.pirnt(bsTree.root);Thread.sleep(50);
-        bsTree.insert(9);Thread.sleep(50);
-        TreePrintUtil.pirnt(bsTree.root);
-        bsTree.insert(3);TreePrintUtil.pirnt(bsTree.root);Thread.sleep(50);
-        bsTree.insert(2);TreePrintUtil.pirnt(bsTree.root);Thread.sleep(50);
-        bsTree.insert(5);TreePrintUtil.pirnt(bsTree.root);Thread.sleep(50);
-        bsTree.insert(4);TreePrintUtil.pirnt(bsTree.root);Thread.sleep(50);
-        bsTree.insert(11);TreePrintUtil.pirnt(bsTree.root);Thread.sleep(50);
-        bsTree.insert(13);TreePrintUtil.pirnt(bsTree.root);Thread.sleep(50);
-        bsTree.insert(14);TreePrintUtil.pirnt(bsTree.root);Thread.sleep(50);
-        bsTree.insert(12);TreePrintUtil.pirnt(bsTree.root);Thread.sleep(50);
+        bsTree.insert(6);
+        bsTree.insert(9);
+        bsTree.insert(3);
+        bsTree.insert(2);
+        bsTree.insert(5);
+        bsTree.insert(4);
+        bsTree.insert(11);
+        bsTree.insert(13);
+        bsTree.insert(14);
+        bsTree.insert(12);
 
-        bsTree.insert(10);TreePrintUtil.pirnt(bsTree.root);Thread.sleep(50);
+        //bsTree.insert(10);
+        //TreePrintUtil.pirnt(bsTree.root);
         bsTree.postOrder();
+        System.out.println();
+        bsTree.postOrderByStack();
+        System.out.println();
+        bsTree.inOrder();
+        System.out.println();
+        bsTree.inOrderByStack();
+        System.out.println();
+        bsTree.preOrder();
+        System.out.println();
+        bsTree.preOrderByStack();
+
+        System.out.println();
+        TreePrintUtil.pirnt(bsTree.root);
 
 
 

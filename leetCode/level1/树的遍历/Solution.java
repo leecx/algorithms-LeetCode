@@ -1,3 +1,4 @@
+/*
 package level1.树的遍历;
 
 
@@ -25,11 +26,13 @@ public class Solution {
         TreePrintUtil.pirnt(node);
     }
 
-    /**
+    */
+/**
      * 树的前序遍历(中左右)   栈
      * @param root
      * @return
-     */
+     *//*
+
     public List<Node> preorderTraversal(Node root) {
         List<Node> result = new ArrayList();
         if(root == null){
@@ -50,10 +53,12 @@ public class Solution {
         return result;
     }
 
-    /**
+    */
+/**
      * 前序遍历，递归   中左右
      * @param root
-     */
+     *//*
+
     public void voidPreorderTraversal(Node root){
         //递归结束条件
         if(root!=null){
@@ -63,10 +68,12 @@ public class Solution {
         }
     }
 
-    /**
+    */
+/**
      * 中序遍历    左中右
      * @param root
-     */
+     *//*
+
     public void voidInorderTraversal(Node root){
         //递归结束条件
         if(root!=null){
@@ -76,10 +83,12 @@ public class Solution {
         }
     }
 
-    /**
+    */
+/**
      * 后序遍历     左右中
      * @param root
-     */
+     *//*
+
     public void voidPostorderTraversal(Node root){
         //递归结束条件
         if(root!=null){
@@ -103,3 +112,4 @@ public class Solution {
 }
 
 
+*/
